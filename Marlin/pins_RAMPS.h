@@ -87,13 +87,19 @@
 #define Z_DIR_PIN          48
 #define Z_ENABLE_PIN       62
 
-#define E0_STEP_PIN        26
-#define E0_DIR_PIN         28
-#define E0_ENABLE_PIN      24
+// SCM: I fake the first extruder and add a third extruder port here to support two motors in x and y. This is needed because 0 extruders cannot be configured.
+// The extruder 0 dumy configuration uses free ports from aux-2
+#define E0_STEP_PIN        40
+#define E0_DIR_PIN         42
+#define E0_ENABLE_PIN      44
 
-#define E1_STEP_PIN        36
-#define E1_DIR_PIN         34
-#define E1_ENABLE_PIN      30
+#define E1_STEP_PIN        26
+#define E1_DIR_PIN         28
+#define E1_ENABLE_PIN      24
+
+#define E2_STEP_PIN        36
+#define E2_DIR_PIN         34
+#define E2_ENABLE_PIN      30
 
 #define SDSS               53
 #define LED_PIN            13
