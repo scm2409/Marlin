@@ -1527,6 +1527,16 @@ inline void buffer_line_to_current_position() {
  * used by G0/G1/G2/G3/G5 and many other functions to set a destination.
  */
 inline void buffer_line_to_destination(const float &fr_mm_s) {
+/*
+    SERIAL_ECHOPAIR("buffer_line_to_destination=", destination[X_AXIS]);
+    SERIAL_ECHOPAIR(", ", destination[Y_AXIS]);
+    SERIAL_ECHOPAIR(", ", destination[Z_AXIS]);
+    SERIAL_ECHOPAIR(", ", destination[E_AXIS]);
+    SERIAL_ECHOPAIR("fr_mm_s=", fr_mm_s);
+    SERIAL_EOL();
+*/
+
+
   planner.buffer_line(destination[X_AXIS], destination[Y_AXIS], destination[Z_AXIS], destination[E_AXIS], fr_mm_s, active_extruder);
 }
 
@@ -3164,7 +3174,15 @@ void gcode_get_destination() {
     }
     else
       destination[i] = current_position[i];
+/*
+
+    SERIAL_ECHOPAIR("gcode_get_destination[", i);
+    SERIAL_CHAR("]");
+    SERIAL_ECHOPAIR("=", destination[i]);
+    SERIAL_CHAR(",");
+*/
   }
+//  SERIAL_EOL();
 
   if (parser.linearval('F') > 0.0)
     feedrate_mm_s = MMM_TO_MMS(parser.value_feedrate());
